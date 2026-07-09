@@ -5,7 +5,7 @@ pipeline{
         maven 'Maven'
     }
     environment {
-                    DOCKER_REPO = "mananm2004/java-maven-app"
+                    DOCKER_REPO = "mananm2004/manan"
     }
     stages{
 
