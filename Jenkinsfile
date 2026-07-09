@@ -27,13 +27,6 @@ pipeline{
                 }
             }
         }
-        stage('Testing the application'){
-            steps{
-                script{
-                    echo 'Testing...'
-                }
-            }
-        }
         stage('Build and push the docker image to dockerhub'){
             steps{
                 script{
