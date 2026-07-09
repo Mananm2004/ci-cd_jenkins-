@@ -54,7 +54,7 @@ pipeline{
             steps{
                 script{
                     echo 'Deploying to ec2...'
-                    def  shellCmd = "bash  ./server-cmds.sh ${IMAGE_NAME}"
+                    def  shellCmd = "bash  ./server-cmds.sh ${DOCKER_REPO}:${IMAGE_NAME}"
                     def ec2Instance = "ec2-user@13.61.174.182"
                     sshagent(['ec2-ssh-key']) {
                         sh "scp server-cmds.sh  ${ec2Instance}:/home/ec2-user/server-cmds.sh"
