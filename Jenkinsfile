@@ -9,28 +9,28 @@ pipeline{
                 }
             }
         }
-        stage('Build docker image'){
+        stage('Testing the application'){
+            steps{
+                script{
+                    echo 'Testing...'
+                }
+            }
+        }
+        stage('Building the docker image'){
             steps{
                 script{
                     echo 'Building...'
                 }
             }
         }
-        stage('Build'){
+        stage('Deploy to ec2'){
             steps{
                 script{
                     echo 'Building...'
                 }
             }
         }
-        stage('Build'){
-            steps{
-                script{
-                    echo 'Building...'
-                }
-            }
-        }
-        stage('Build'){
+        stage('Commit and the version to git'){
             steps{
                 script{
                     echo 'Building...'
