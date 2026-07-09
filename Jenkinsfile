@@ -18,6 +18,7 @@ pipeline{
                     env.IMAGE_NAME = "$version-$BUILD_NUMBER"
                 }
         }
+        }
         stage('Build jar'){
             steps{
                 script{
@@ -67,19 +68,21 @@ pipeline{
                 }
             }
         }
-    stage('Commit version update') {
-            steps {
-                script {
-                    sshagent(['Manan_github']) {
-                        sh '''
-                            git config user.email "jenkins@example.com"
-                            git config user.name "Jenkins"
+        stage('Commit version update') {
+                steps {
+                    script {
+                        sshagent(['Manan_github']) {
+                            sh '''
+                                git config user.email "jenkins@example.com"
+                                git config user.name "Jenkins"
 
-                            git add .
-                            git commit -m "Incremented the version" || true
-                            git push origin HEAD:master
-                        '''
+                                git add .
+                                git commit -m "Incremented the version" || true
+                                git push origin HEAD:master
+                            '''
+                        }
                     }
                 }
-            }
+    }
+    }
 }
