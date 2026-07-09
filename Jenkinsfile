@@ -34,7 +34,7 @@ pipeline{
             steps{
                 script{
                     echo 'Building docker image...'
-                    sh "docker build -t $IMAGE_NAME ."
+                    sh "docker build -t ${DOCKER_REPO}:$IMAGE_NAME ."
                    
                     withCredentials([
                         usernamePassword(
