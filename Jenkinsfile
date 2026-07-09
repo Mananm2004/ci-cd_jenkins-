@@ -70,6 +70,8 @@ pipeline{
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: 'gitlab-credentials', passwordVariable: 'PASS', usernameVariable: 'USER')]){
+                        git config user.name "Jenkins"
+                        git config user.email "jenkins@example.com"
                         sh 'git remote set-url origin https://$USER:$PASS@github.com/Mananm2004/ci-cd_jenkins-.git'
                         sh 'git add .'
                         sh 'git commit -m "ci: version bump"'
