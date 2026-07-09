@@ -32,6 +32,9 @@ pipeline{
                 script{
                     echo 'Building docker image...'
                     sh "docker build -t $IMAGE_NAME ."
+                    environment {
+                    DOCKER_REPO = "mananm2004/java-maven-app"
+                    }
                     withCredentials([
                         usernamePassword(
                             credentialsId: 'docker-hub-credentials',
@@ -40,7 +43,7 @@ pipeline{
                         )
                     ]) {
                         sh 'echo "$PASS" | docker login -u "$USER" --password-stdin'
-                        sh "docker push ${IMAGE_NAME}"
+                        sh "docker push ${DOCKER_REPO}:${IMAGE_NAME}"
                     }
 
                 }
